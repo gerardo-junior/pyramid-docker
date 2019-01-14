@@ -66,12 +66,5 @@ docker run -it --rm gerardojunior/pyramid.environment:stable sh
 docker-compose run backend sh
 ```
 
-
-## how to configure xdebug (if you build with DEBUG=true)
-
-> the default ide key is **IDEA_XDEBUG** but you can change with arg build *XDEBUG_CONFIG_IDEKEY*
-
-> the debug server will be available in **:9000** by default but you can change with arg *XDEBUG_CONFIG_PORT*
-
 ### License  
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
