@@ -35,7 +35,7 @@ docker build . --tag gerardojunior/pyramid.environment
 
 ```bash
 # in your project folder
-docker run -it --rm -v $(pwd):/usr/share/src -p 1234:80 gerardojunior/pyramid.environment:stable [sh command or symfony console]
+docker run -it --rm -v $(pwd):/usr/share/src -p 1234:80 gerardojunior/pyramid.environment:stable [sh command ]
 ```
 ##### With [docker-compose](https://docs.docker.com/compose/)
 
