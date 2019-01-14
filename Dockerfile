@@ -1,4 +1,5 @@
 FROM python:3.5-alpine
+LABEL maintainer="Gerardo Junior <me@gerardo-junior.com>"
 
 # Create project directory
 RUN mkdir -p /usr/share/src
@@ -23,6 +24,6 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Set project directory
 VOLUME ["/usr/share/src"]
 WORKDIR /usr/share/src
-USER pyramid
 EXPOSE 80
+USER pyramid
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
