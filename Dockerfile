@@ -23,6 +23,6 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Set project directory
 VOLUME ["/usr/share/src"]
 WORKDIR /usr/share/src
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 USER pyramid
 EXPOSE 80
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
