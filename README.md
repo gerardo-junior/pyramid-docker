@@ -1,6 +1,6 @@
 # Pyramid docker image 
 
-[![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/gerardojunior/pyramid.environment)
+[![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/gerardojunior/pyramid)
 
 Docker image to run [pyramid](https://trypyramid.com/) framework
 
@@ -16,7 +16,7 @@ Docker image to run [pyramid](https://trypyramid.com/) framework
 ## Come on, do your tests
 
 ```bash
-docker pull gerardojunior/pyramid.environment:stable
+docker pull gerardojunior/pyramid:stable
 ```
 ## How to build
 
@@ -24,9 +24,9 @@ to build the image you need install the [docker engine](https://www.docker.com/)
 
 *~ You can try building with different versions of software with docker args, for example: PYTHON_VERISON=7.2.5 ~*
 ```bash
-git clone https://github.com/gerardo-junior/pyramid.environment.git
-cd pyramid.environment
-docker build . --tag gerardojunior/pyramid.environment
+git clone https://github.com/gerardo-junior/pyramid.git
+cd pyramid
+docker build . --tag gerardojunior/pyramid
 ```
 
 ## How to use
@@ -35,7 +35,7 @@ docker build . --tag gerardojunior/pyramid.environment
 
 ```bash
 # in your project folder
-docker run -it --rm -v $(pwd):/usr/share/src -p 1234:80 gerardojunior/pyramid.environment:stable [sh command ]
+docker run -it --rm -v $(pwd):/usr/share/src -p 1234:80 gerardojunior/pyramid:stable [sh command ]
 ```
 ##### With [docker-compose](https://docs.docker.com/compose/)
 
@@ -45,7 +45,7 @@ Create the docker-compose.yml file  in your project folder with:
 # (...)
 
   backend: 
-    image: gerardojunior/pyramid.environment:stable
+    image: gerardojunior/pyramid:stable
     volumes:
       - type: bind
         source: ./
@@ -59,7 +59,7 @@ Create the docker-compose.yml file  in your project folder with:
 ## How to enter image shell
  
 ```bash
-docker run -it --rm gerardojunior/pyramid.environment:stable sh
+docker run -it --rm gerardojunior/pyramid:stable sh
 
 # or with docker-compose
 
