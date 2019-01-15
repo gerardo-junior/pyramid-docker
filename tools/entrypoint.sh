@@ -1,8 +1,8 @@
 #!/bin/sh
-sudo chgrp -Rf pyramid ./ 
+sudo chgrp -Rf $(whoami) ./ 
 
 if [ -e "$(pwd)/requirements.txt" ]; then
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirements.txt --user
 fi
 
 if [ ! -z "$1" ]; then
