@@ -1,8 +1,12 @@
-FROM python:3.5-alpine
+ARG PYTHON_VERSION="3.5"
+
+FROM python:$PYTHON_VERSION-alpine
+
 LABEL maintainer="Gerardo Junior <me@gerardo-junior.com>"
+LABEL url="https://github.com/gerardo-junior/pyramid-docker.git"
 
 ENV USER pyramid
-ENV WORKDIR /usr/share/src
+ENV WORKDIR /src
 
 # Install run deps
 RUN apk --update add --virtual .persistent-deps \
@@ -14,23 +18,21 @@ RUN apk --update add --virtual .persistent-deps \
                                gcc \
                                build-base
 
-# Copy scripts
-COPY ./tools/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set project directory
 RUN mkdir -p ${WORKDIR}
-VOLUME ["$WORKDIR"]
-WORKDIR $WORKDIR
-
-EXPOSE 80
 
 RUN set -xe && \
     addgroup $USER && \
     adduser -G $USER -s /bin/sh -D $USER && \
     echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/default && \
-    chown -Rf $USER $WORKDIR 
-USER $USER
-ENV PATH "${PATH}:/home/${USER}/.local/bin"
+    chown -Rf $USER $WORKDIR
+     
+COPY ./tools /opt/tools
+RUN chmod -R +x /opt/tools/
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+VOLUME [$WORKDIR]
+WORKDIR $WORKDIR
+EXPOSE 80
+USER $USER
+ENTRYPOINT ["/bin/sh", "/opt/tools/entrypoint-nuxtjs.sh"]

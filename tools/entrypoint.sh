@@ -1,9 +1,11 @@
 #!/bin/sh
-sudo chgrp -Rf $(whoami) ./ 
+sudo chgrp -Rf $USER $WORKDIR
 
 if [ -e "$(pwd)/requirements.txt" ]; then
     pip install --no-cache-dir -r requirements.txt --user
 fi
+
+export PATH="$PATH:/home/$USER/.local/bin"
 
 if [ ! -z "$1" ]; then
     if [ -z "$(which -- $1)" ]; then
