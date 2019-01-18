@@ -27,7 +27,7 @@ RUN set -xe && \
     adduser -G $USER -s /bin/sh -D $USER && \
     echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/default && \
     chown -Rf $USER $WORKDIR
-     
+
 COPY ./tools /opt/tools
 RUN chmod -R +x /opt/tools/
 
@@ -35,4 +35,4 @@ VOLUME [$WORKDIR]
 WORKDIR $WORKDIR
 EXPOSE 80
 USER $USER
-ENTRYPOINT ["/bin/sh", "/opt/tools/entrypoint-nuxtjs.sh"]
+ENTRYPOINT ["/bin/sh", "/opt/tools/entrypoint.sh"]
